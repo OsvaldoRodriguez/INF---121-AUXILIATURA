@@ -1,0 +1,287 @@
+
+
+
+
+En una farmacia se tienen varios medicamentos, donde se tiene el nombre de la farmacia su ubicacion, ademas una farmacia tiene un propietario, esta farmacia desea hacer un registro de los medicamentos que tiene, cada medicamento tiene un codigo un nombre, la cantidad de dicho medicamento y un precio con estos datos diseñe un diagrama UML
+
+
+
+FARMACIA
+
+- nombre : String
+- ubicacion : String
+- nombre_propietario : String
+- nro_medicamento
+- Medicamento m[100]; : Medicamento
+
+MEDICAMENTO
+
+- codigo : String  				
+- nombre : String
+- stock  : int 
+- precio : double
+
+
+
+
+________________________
+
+		FARMACIA
+_______________________
+
+	- nombre
+	- ubicacion
+	...
+	-
+
+
+_______________________
+
+	+ leer()
+	+ mostrar()
+	+ obt_ubicacion();
+	+ medicamento_mas_caro(Farmacia f);
+
+_______________________
+
+
+
+
+
+
+Medicamento{
+	private 
+		String nombre, codigo;
+		int stock;
+		double precio;
+
+	public
+
+
+		metodo obt_nombre(){
+			return nombre;
+		}
+
+		metodo obt_codigo(){
+			return codigo;
+		}
+
+		metodo obt_stock(){
+			return stock;
+		}
+
+		metodo obt_precio(){
+			return precio();
+		}
+
+	Medicamento(){
+		nombre = "paracetamol";
+		codigo = "M1";
+		stock = 10;
+		precio = 5.5;
+	}
+
+
+	metodo leer(){
+		read(codigo, nombre, stock, precio);
+	}
+
+	metodo mostrar(){
+		print(codigo, nombre, stock, precio);
+	}
+
+
+}
+
+
+
+Farmacia{
+	private
+		String nombre;
+		String ubicacion;
+		String nombre_propietario;
+		int nro_medicamento;
+		Dim Medicamento m[100];
+
+	public
+
+	metodo pon_stock(int _stock){
+		stock = _stock;
+	}
+	metodo obt_nombre(){
+		return nombre;
+	}
+
+	metodo obt_ubicacion(){
+		return ubicacion;
+	}
+
+	metodo obt_nombre_propietario(){
+		return nombre_propietario;
+	}
+
+	metodo obt_nro_medicamento(){
+		return nro_medicamento;
+	}
+
+	metodo obt_m(){
+		return m;
+	}
+
+
+	Farmacia(){
+
+		nombre = "vidaFeliz";
+		ubicacion = "satelite";
+		nombre_propietario = "pepe";
+		nro_medicamento = 2;
+		for(i to nro_medicamento){
+			m[i] = new Medicamento();
+			m[i].leer();
+		}
+	}
+
+	Farmacia(String _nombre){
+
+		nombre = _nombre;
+		ubicacion = "cota_cota";
+		nombre_propietario = "juan";
+		nro_medicamento = 3;
+		for(i to nro_medicamento){
+			m[i] = new Medicamento();
+			m[i].leer();
+		}
+	}
+
+	metodo operator ++(Farmacia f){
+		print(f.obt_nombre(),f.obt_ubicacion(), f.obt_nombre_propietario(), f.obt_nro_medicamento());
+
+		for(i to f.obt_nro_medicamento()){
+			f.obt_m()[i].mostrar();
+		}
+		return f;
+	}
+
+	// farmacia
+	metodo operator !(Farmacia f){
+		double precio = 0.0;
+		for(i to f.obt_nro_medicamento()){
+			double precio_med = f.obt_m()[i].obt_precio();
+			if(precio < precio_med) then {
+				precio = precio_med;
+			}
+		}
+
+		// hasta aqui tengo el maximo
+		for(i to f.obt_nro_medicamento()){
+			double precio_med = f.obt_m()[i].obt_precio();
+			if(precio == precio_med) then {
+				f.obt_m()[i].mostrar();
+			}
+		}
+
+		return f;
+	}
+
+	// Farmacia
+	metodo operator / (Farmacia f, int x){
+		for(i to f.obt_nro_medicamento()){
+			int stock = f.obt_m()[i].obt_stock();
+			if(stock > x) then {
+				f.obt_m()[i].mostrar();
+			}
+		}
+		return f;
+	}
+
+	// int
+	metodo operator * (Farmacia f, int x){
+		int contador = 0;
+		for(i to f.obt_nro_medicamento()){
+			int stock = f.obt_m()[i].obt_stock();
+			if(stock > x) then {
+				contador += 1;
+			}
+		}
+		return contador;
+	}
+	// bool
+	metodo operator > (Farmacia f, String _nombre){
+		bool nombre = false;
+		if(f.obt_nombre().equals(_nombre)) then  {
+			nombre = true;
+		}
+
+		return nombre;
+	}
+
+	metodo operator + (Farmacia f, String _codigo){
+		for(i to f.obt_nro_medicamento()){
+			if(f.obt_m()[i].obt_codigo().equals(_codigo)){
+				int stock_actual = f.obt_m()[i].obt_stock();
+				f.obt_m()[i].pon_stock(stock_actual + 10);
+			}
+		}
+		return f;
+	}
+
+	metodo operator - (Farmacia f, Farmacia f2){
+
+		if( f1 * 10 > f2 * 10) then {
+			f1.mostrar();
+		}else if(f1 * 10 < f2 * 10){
+			f2.mostrar();
+		}else{
+			f1.mostrar();
+			f2.mostrar();
+		}
+		return f;
+	}
+}
+
+
+
+Main{
+	
+	// a) instanciar dos objetos de diferente forma
+	Farmacia f1();
+	Farmacia f2("F2");
+	// b) Sobrecargar el operador ++ para mostrar datos
+	f1++;
+
+	// c) Sobrecargar el operador ! para mostrar el medicamento mas caro
+
+	!f1;
+
+	// d) Sobrecargar el operador / para mostrar los medicamentos que tienen stock mayor a X.
+
+	f1 / 5;
+
+	//d.1) Sobrecargar el operador * para contar los medicamentos que tienen stock mayor a X.
+
+	print(f1 * 5);
+
+
+	// e) Sobrecargar el operador > para verificar si la farmacia tiene nombre Y.
+
+	if(f1 > "vidaFeliz") then {
+		print("si tiene ese nombre");
+	}else{
+		print("no tiene ese nombre");
+	}
+
+	// acaba de llegar 10 medicamentos a la  farmacia con codigo Y
+	// f) Sobrecagar el operador + para actualizar el stock de los medicamentos con codigo Y
+
+	f1 + "M2";
+
+
+	// g) sobrecargar el operador - para mostrar a la(s) farmacia(s) que tengan a mayor cantidad de medicamentos que tienen stock mayor a 10
+
+	f1 - f2;
+
+}
+
+
+
+
