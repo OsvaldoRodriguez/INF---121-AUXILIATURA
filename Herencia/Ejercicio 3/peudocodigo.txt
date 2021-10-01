@@ -1,0 +1,162 @@
+Class Mueble{
+	protected
+		String material;
+		double peso;
+		String color;
+
+	public
+
+
+		metodo obt_material(){
+			return material;
+		}
+
+
+		metodo obt_peso(){
+			return peso;
+		}
+
+		metodo obt_color(){
+			return color;
+		}
+		
+		Mueble(String _m, double p, String c){
+			material = _m;
+			peso = p;
+			color = c;
+		}
+
+		metodo leer(){
+			read(material, peso, color);
+		}
+
+
+		metodo mostrar(){
+			print(material, peso, color);
+		}
+}
+
+Class Ropero extends Mueble{
+	
+	private 
+		int nro_cajas;
+		double altura;
+		double ancho;
+
+	public
+
+		metodo obt_nro_cajas(){
+			return nro_cajas;
+		}
+		metodo obt_altura(){
+			return altura;
+		}
+		metodo obt_ancho(){
+			return ancho;
+		}
+		
+
+
+		Ropero(String _mat, double _peso, String _color, int cajas, double _altura, double _ancho){
+			super(_mat, _peso, _color);
+			nro_cajas = cajas;
+			altura = _altura;
+			ancho = _ancho;
+		} 
+
+		metodo leer(){
+			super.leer();
+			read(nro_cajas, altura, ancho);
+		}
+
+		metodo mostrar(){
+			super.mostrar();
+			print(nro_cajas, altura, ancho);
+		}
+
+		metodo verificar_caja(){
+			if(es_primo(nro_cajas)){
+				this.mostrar();
+			}
+		}
+
+		metodo es_primo(int x){
+			if(x == 2)
+				return true;
+			if(x < 2 || x % 2 == 0)
+				return false;
+
+			for(int i = 3; i * i <= x; i += 2){
+				if(x % i == 0)
+					return false;
+			}
+			return true;
+		}
+}
+
+
+Class Sillon{
+	private 
+		int capacidad;
+
+
+	public
+
+
+		metodo obt_capacidad(){
+			return capacidad;
+		}
+		Sillon(String _mat, double _peso, String _color, int _cap){
+			super(_mat, _peso, _color);
+			capacidad = _cap;
+		}
+
+		metodo leer(){
+			super.leer();
+			read(capacidad);
+		}
+
+
+		metodo mostrar(){
+			super.mostrar();
+			print(capacidad);
+		}
+
+		metodo verifica_peso(Sillon s1) {
+			String ans = "no ";
+			if(super.peso == s1.obt_peso()) {
+				ans = "si ";
+			}
+			print(ans , " tiene el mismo peso");
+		}
+
+
+
+}
+
+
+Main(){
+
+	// a) Crear 2 Objeto roperos y 1 sillón (el constructor de la clase padre y de la clase derivada debe tener parámetros)
+	Ropero r1("madera", 45.5, "Cafe", 5, 1.2, 0.98);
+	Ropero r2("madera", 40.1, "Cafe", 3, 1.8, 1.98);
+	Sillon s1("madera", 40.1, "Verde", 11);
+
+	// b) Mostrar los datos de 2 roperos y 1 sillón
+	r1.mostrar();
+	r2.mostrar();
+	s1.mostrar();
+
+
+	// c) Verificar si un ropero tiene el mismo peso que un sillón
+
+	r1.verifica_peso(s1);
+
+	// d) Dado 2 roperos mostrar el(los) ropero(s) que tengan un numero primo como la
+cantidad de nro_cajas.
+
+	r1.verificar_caja();
+	r2.verificar_caja();
+
+
+}
