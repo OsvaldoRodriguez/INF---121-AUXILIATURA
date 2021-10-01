@@ -1,0 +1,193 @@
+Class FiguraGeometrica{
+	protected 
+		String color;
+
+	public
+
+		metodo obt_color(){
+			return color;
+		}
+
+		FiguraGeometrica(String _color){
+			color = _color;
+		}
+
+		metodo leer(){
+			read(color);
+		}
+
+		metodo mostrar(){
+			print(color);
+		}
+}
+
+
+Class Triangulo extends FiguraGeometrica{
+	private 
+		double lado_1, lado_2, lado_3;
+
+	public
+
+		Triangulo(String _color, double l1, double l2, double l3){
+			super(_color);
+			lado_1 = l1;
+			lado_2 = l2;
+			lado_3 = l3;
+		}
+
+		metodo obt_lado_1(){
+			return lado_1;
+		}
+
+		metodo obt_lado_2(){
+			return lado_2;
+		}
+
+		metodo obt_lado_3(){
+			return lado_3;
+		}
+
+		metodo leer(){
+			super.leer();
+			read(lado_1, lado_2, lado_3);
+		}
+
+
+		metodo mostrar(){
+			super.mostrar();
+			print(lado_1, lado_2, lado_3);
+		}
+
+
+		metodo area() {
+			double s = (lado_1 + lado_2 + lado_3) / 2;
+			double area = Math.sqrt(s * (s - lado_1) * (s - lado_2) * (s - lado_3));
+			return area;
+		}
+
+		metodo isoceles(){
+			if(lado_1 == lado_2 || lado_1 == lado_3 || lado_2 == lado_3) then {
+				print("es isoceles");
+			}else{
+				print("no es isoceles");
+			}
+		}
+
+		metodo rectangulo() {
+			double c = 0, a = 0, b = 0;
+			if(lado_1 > c) then {
+				c = lado_1;
+				a = lado_2;
+				b = lado_3;
+			}
+			
+			if(lado_2 > c) then {
+				c = lado_2;
+				a = lado_3;
+				b = lado_1;
+			}
+			
+			if(lado_3 > c) theb {
+				c = lado_3;
+				a = lado_2;
+				b = lado_1;
+			}
+			
+			if(c * c == a * a + b * b) then {
+				print("es rectangulo");
+			}else {
+				print("no es rectangulo");
+			}
+		
+		
+		}
+}
+
+
+Class Circulo extends FiguraGeometrica{
+	
+	private double radio;
+
+	public 
+
+		metodo obt_radio(){
+			return radio;
+		}
+
+		Circulo(String color, double _radio){
+			super(color);
+			radio = _radio;
+		}
+
+		metodo leer(){
+			super.leer();
+			read(radio);
+		}
+
+		metodo mostrar(){
+			super.mostrar();
+			print(radio);
+		}
+
+
+		metodo mayor_area(Circulo c){
+
+			if(this.area() > c.area()) then {
+				this.mostrar();
+			}else if(this.area() < c.area()) then {
+				c.mostrar();
+			}else{
+				this.mostrar();
+				c.mostrar();
+			}
+		}
+
+
+		metodo area(){
+			return radio * radio * 3.1416;
+		}
+
+
+		
+}
+
+
+Main(){
+	
+
+	// a) Instanciar 3 triangulos y 3 circulos, leer y mostrar datos
+
+	Triangulo t1("Verde", 3, 4, 5);
+	Triangulo t2("Rojo", 30, 41, 35);
+	Triangulo t3("Verde", 8, 14, 45);
+
+	Circulo c1("Azul", 2);
+	Circulo c2("Lila", 5);
+	Circulo c3("Blanco", 10);
+
+	t1.mostrar();
+	t2.mostrar();
+	t3.mostrar();
+
+	c1.mostrar();
+	c2.mostrar();
+	c3.mostrar();
+
+
+	// b) Hallar el área de un triángulo dado los lados		
+	print(t1.area());
+
+	// c) Verificar si un triángulo es isósceles.
+
+	t1.isoceles();
+
+	// d) Verificar si un triángulo es rectángulo.
+
+	t1.rectangulo();
+
+	// e) Dados dos círculos, mostrar el circulo que tiene mayor área
+
+	c1.mayor_area(c2);
+
+
+}
