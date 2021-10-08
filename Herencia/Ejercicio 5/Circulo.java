@@ -39,6 +39,27 @@ public class Circulo extends FiguraGeometrica{
 			}
 		}
 
+		void mayor_area(Triangulo t){
+			double a1 = this.area();  // area del circulo
+			double a2 = t.area();
+
+			if(a1 > a2)  {
+				this.mostrar();
+			}else if(a1 < a2)  {
+				t.mostrar();
+			}else{
+				this.mostrar();
+				t.mostrar();
+			}
+		}
+		
+		void colores_iguales(Triangulo t){
+			if(this.color.equals(t.obt_color()))  {
+				System.out.println("son iguales");
+			}else{
+				System.out.println("no son iguales");
+			}
+		}
 
 		double area(){
 			return radio * radio * Math.PI;

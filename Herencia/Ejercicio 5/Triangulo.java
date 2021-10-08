@@ -85,4 +85,21 @@ public class Triangulo extends FiguraGeometrica {
 		
 		
 	}
+	
+	
+	
+	
+	public void mayor_area(Circulo c){
+		double a1 = this.area(); 
+		double a2 = c.area();
+
+		if(a1 > a2)  {
+			this.mostrar();
+		}else if(a1 < a2) {
+			c.mostrar();
+		}else{
+			this.mostrar();
+			c.mostrar();
+		}
+	}
 }

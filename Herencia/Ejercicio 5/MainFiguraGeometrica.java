@@ -42,6 +42,19 @@ public class MainFiguraGeometrica {
 		System.out.println("\n inciso e\n");
 		c1.mayor_area(c2);
 		
+		
+		// f) Dado 1 triangulo y 1 circulo mostrar el que tenga mayor area
+
+		System.out.println("inciso f\n");
+		t1.mayor_area(c1);
+		c1.mayor_area(t2);
+		
+
+		// g) Dado 1 triangulo y 1 circulo verificar si ambas figuras son del mismo color.
+
+		System.out.println("inciso g\n");
+		c2.colores_iguales(t2);
+		
 	}
 
 }
