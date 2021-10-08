@@ -101,6 +101,21 @@ Class Triangulo extends FiguraGeometrica{
 		
 		
 		}
+
+
+		metodo mayor_area(Circulo c){
+			double a1 = this.area(); 
+			double a2 = c.area();
+
+			if(a1 > a2) then {
+				this.mostrar();
+			}else if(a1 < a2) then {
+				c.mostrar();
+			}else{
+				this.mostrar();
+				c.mostrar();
+			}
+		}
 }
 
 
@@ -143,10 +158,34 @@ Class Circulo extends FiguraGeometrica{
 		}
 
 
-		metodo area(){
-			return radio * radio * 3.1416;
+
+		metodo mayor_area(Triangulo t){
+			double a1 = this.area();  // area del circulo
+			double a2 = t.area();
+
+			if(a1 > a2) then {
+				this.mostrar();
+			}else if(a1 < a2) then {
+				t.mostrar();
+			}else{
+				this.mostrar();
+				t.mostrar();
+			}
 		}
 
+
+		metodo area(){
+			return radio * radio * 3.141592;
+		}
+
+
+		metodo colores_iguales(Triangulo t){
+			if(this.color.equals(t.obt_color())) then {
+				print("son iguales");
+			}else{
+				print("no son iguales");
+			}
+		}
 
 		
 }
@@ -175,7 +214,7 @@ Main(){
 
 
 	// b) Hallar el área de un triángulo dado los lados		
-	print(t1.area());
+	print(t1.area());	
 
 	// c) Verificar si un triángulo es isósceles.
 
@@ -188,6 +227,22 @@ Main(){
 	// e) Dados dos círculos, mostrar el circulo que tiene mayor área
 
 	c1.mayor_area(c2);
+
+
+	// f) Dado 1 triangulo y 1 circulo mostrar el que tenga mayor area
+
+	t1.mayor_area(c1);
+	c1.mayor_area(t2);
+
+	// g) Dado 1 triangulo y 1 circulo verificar si ambas figuras son del mismo color.
+
+
+	c2.colores_iguales(t2);
+
+
+
+
+
 
 
 }
