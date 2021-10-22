@@ -1,0 +1,290 @@
+
+
+
+
+Ejercicio 9 
+
+
+
+Persona 
+	- ci  // id
+	- nombre
+	- sexo   // M, F
+
+Ciclista
+	- VelMaxCic  // 
+	- ResistenciaCic // porcentaje  
+
+
+Corredor
+	- VelMaxCo 
+	- ResistenciaCo //
+	- tiempo    // en que tiempo lo realiza s
+	- distancia // 20 k
+
+Nadador
+
+	- ResistenciaN
+	- VelMaxN
+	- Mejor_estilo // pecho, libre, mariposa
+
+
+
+Class Persona{
+
+	private String nombre, sexo;
+	private int ci;
+
+	Persona(){
+		nombre = "Alan";
+		sexo = "M";
+		ci = 1234567;
+	}
+
+	metodo obt_nombre(){
+		return nombre;
+	}
+
+	// getters y setters
+
+
+	Persona(int ci, String nombre, String sexo){
+		this.nombre = nombre;
+		this.sexo = sexo;
+		this.ci = ci;
+	}
+
+
+
+	metoto leerp(){
+		read(ci, nombre, sexo);
+	}
+
+
+	metoto mostrarp(){
+		print(ci, nombre, sexo);
+	}
+
+}
+
+
+
+
+Class Ciclista{
+	
+	private double vel_maxCic, resistenciaCic;
+
+
+	public
+
+	Ciclista(){
+		vel_maxCic = 0;
+		resistenciaCic = 10;
+	}
+
+	metodo obt_resistenciaCic(){
+		return resistenciaCic;
+	}
+
+
+	Ciclista(double vel_max, double resistencia){
+		this.vel_maxCic = vel_max;
+		this.resistenciaCic = resistencia;
+	}
+
+	metodo leercic(){
+		read(vel_maxCic, resistenciaCic);
+	}
+
+	metodo mostrarcic(){
+		print(vel_maxCic, resistenciaCic);
+	}
+}
+
+Class Corredor{
+	private double vel_maxCo, resistenciaCo, tiempo, distsancia;
+
+	public
+
+	Corredor(){
+		vel_maxCo = resistenciaCo = tiempo = distancia = 0;
+	}
+
+
+	metodo obt_resistenciaCo(){
+		return resistenciaCo;
+	}
+
+	Corredor(double vel_max, double resistencia, double tiempo, double distancia){
+		this.vel_maxCo = vel_max;
+		this.resistenciaCo = resistencia;
+		this.tiempo = tiempo;
+		this.distancia = distancia;
+	}
+
+
+	metodo leercoc(){
+		read(vel_maxCo, resistenciaCo, tiempo, distsancia);
+	}
+
+
+	metodo mostrarcoc(){
+		print(vel_maxCo, resistenciaCo, tiempo, distsancia);
+	}
+
+	 
+}
+
+Class Nadador{
+	private double vel_maxN, resistenciaN;
+	private String mejor_estilo;
+
+	public
+
+	Nadador(){
+		vel_maxN = resistenciaN = 0;
+		mejor_estilo = "";
+	}
+
+	metodo obt_vel_maxN(){
+		return vel_maxN;
+	}
+
+
+	metodo obt_resistenciaN(){
+		return resistenciaN;
+	}
+
+
+	Nadador(double vel_max, double resistencia, String mejor_estilo){
+		this.vel_maxN = vel_max;
+		this.resistenciaN = resistencia;
+		this.mejor_estilo = mejor_estilo;
+	}
+
+
+	metodo leern(){
+		read(vel_maxN, resistenciaN, mejor_estilo);
+	}
+
+
+	metodo mostrarn(){
+		print(vel_maxN, resistenciaN, mejor_estilo);
+	}
+}
+
+
+Class Triatleta extends Persona, Corredor, 	Ciclista, Nadador{
+	private int id_atleta; //
+	private int n_titulos; 
+
+	public
+
+	Triatleta(){
+		id_atleta = n_titulos = 0;
+	} 
+
+	Triatleta (int id_atleta, int n_titulos){
+		this.id_atleta = id_atleta;
+		this.n_titulos = n_titulos;
+	}  
+
+	metodo leer(){
+		super.leerp();
+		super.leercic();
+		super.leercoc();
+		super.leern();
+		read(id_atleta, n_titulos);
+	}
+
+
+	metodo mostrar(){
+
+		super.mostrarp();
+		super.mostrarcic();
+		super.mostrarcoc();
+		super.mostrarn();
+		print(id_atleta, n_titulos);
+	}
+
+
+	metodo mayor(Triatleta t, String nombre){
+		if(obt_nombre().equals(nombre) && t.obt_nombre().equals(nombre)) then {
+			int a = this.obt_vel_maxN();
+			int b = t.obt_vel_maxN();
+			if(a == b) then {
+				this.mostrar();
+				t.mostrar();
+			}else if(a > b) then {
+				this.mostrar();
+			}else{
+				t.mostrar();
+			}
+		}else{
+			print("no tienen el nombre" + nombre);
+		}
+	}
+
+	// obtener la resistencia promedio de un triatleta
+	metodo resitencia(){
+		int prom = this.obt_resistenciaCic() + this.obt_resistenciaCo() + this.obt_resistenciaN();
+		prom /= 3;
+		return prom;
+	}
+
+	metodo resitencia(int x){
+		int prom = this.obt_resistenciaCic() + this.obt_resistenciaCo() + this.obt_resistenciaN();
+		prom /= 3;
+		if(prom > x) then {
+			this.mostrar();
+		}
+	}
+
+
+	metodo mayor_resistencia(Triatleta t, int x){
+		int a = this.resistencia();
+		int b = t.resistencia();
+		if(a > x && b > x){
+			this.mostrar();
+			t.mostrar();
+		}else if(a > x){
+			this.mostrar();
+		}else if(b > x){
+			t.mostrar();
+		}else{
+			print("ninguno es mayor");
+		}
+	}
+
+}
+
+
+Main(){
+	
+
+	Triatleta x();
+	x.leer();
+
+	Triatleta y();
+	y.leer();
+
+	// b) crear y mostrar
+
+	x.mostrar();
+	y.mostrar();
+
+	c) Mostrar al triatleta que tiene una mayor velocidad en natación y tiene nombre X.
+
+	x.mayor(y, "alan");
+
+	d) Mostrar al triatleta que tiene tiene una resistencia mayor al 50 %
+
+	x.mayor_resistencia(y, 50){
+
+	d.2 ) 
+
+	x.resistencia(50);
+	y.resistencia(50);
+
+	}
+}
