@@ -1,0 +1,101 @@
+
+Class Persona{
+	private String nombre, fnac, ci;
+	// fnac = "12/12/1123" - "dd/mm/yyyy"
+							  0123456789
+	public
+
+	Persona(){
+		this.nombre = "Ruben";
+		this.fnacl = "12/12/1995";
+		this.ci = "1234567";
+	}
+
+	Persona(String nombre, String fnac, String ci){
+		this.nombre = nombre;
+		this.fnac = fnac;
+		this.ci = ci;
+	}
+
+	// retorna un entero
+	metodo edad(){	
+		String aux = fnac.substring(6, 10);
+		return 2021 - Integer.parseint(aux);
+	}
+	metodo leer(){
+		read(nombre, fnac, ci);
+	}
+
+	metodo mostrar(){
+		print(nombre, fnac, ci);
+	}
+}
+
+
+
+
+Class Organizacion{
+	private String nombreOrg;
+	private Persona encargado;
+	private int nroInt;
+	private Dim Persona integrante[100];
+
+	// composicion
+	Organizacion(){
+		nombreOrg = "linea de buses";
+		// es composicion
+		encargado = new Persona("Alan", "12/12/1998", "1234567");
+		nroInt = 4;
+		for(i = 0 to nroInt){
+			integrante[i] = new Persona();
+			integrante[i].leer();
+		}
+	}
+
+
+	metodo obt_nroInt(){
+		return nroInt;
+	}
+	metodo leer(){
+		read(nombreOrg, encargado, nroInt);
+		for(i = 0 to nroInt){
+			integrante[i].leer();
+		}
+	}
+
+
+	metodo mostrar(){
+		read(nombreOrg, encargado, nroInt);
+		for(i = 0 to nroInt){
+			integrante[i].mostrar();
+		}
+	}
+
+	metodo mayor_edad_x(int x){
+		for(i = 0 to nroInt){
+			if(integrante[i].edad() > x) then {
+				integrante[i].mostrar();
+			}
+		}
+
+	}
+}
+
+
+
+Main(){
+	
+
+	// b) Crear un objeto Organización con 4 integrantes.
+	Organizacion o();
+	o.leer();
+	o.mostrar();
+
+	// c) Mostrar los integrantes de la organización que sean mayores de 25 años.
+
+	o.mayor_edad_x(25);
+
+	
+
+
+}
