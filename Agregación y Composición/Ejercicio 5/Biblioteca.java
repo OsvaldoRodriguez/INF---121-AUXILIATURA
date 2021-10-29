@@ -1,0 +1,77 @@
+
+public class Biblioteca {
+	private String nombre;
+	private int nroLib;
+	private Libro LB[] = new Libro[100];
+	private boolean disponibilidad[] = new boolean[100];
+
+
+	public
+
+	Biblioteca(){
+		nombre = "";
+		nroLib = 0;
+	}
+
+	Biblioteca(String nombre){
+		this.nombre = nombre;
+		nroLib = 0;
+	}
+
+
+	public void mostrar(){
+		System.out.println("BIBLIOTECA");
+		System.out.println("nombre:" + nombre);
+		System.out.println("Nro Libros: " + nroLib);
+		System.out.println("LIBROS DE LA BIBLIOTECA");
+		for(int i = 0;i < nroLib; i++){
+			LB[i].mostrar();
+		}
+		
+		System.out.println("DISPONIBILIDAD");
+		for(int i = 0;i < nroLib; i++){
+			System.out.println(disponibilidad[i]);
+		}
+	}
+	
+	public boolean verificar_disponibilidad_libro_titulo_x(String tit){
+		for(int i = 0; i < nroLib; i++){
+			if(LB[i].obt_titulo().equals(tit)){
+				if(disponibilidad[i] == true){
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+	
+	public void adicionar(Libro x){
+		disponibilidad[nroLib] = true;
+		LB[nroLib++] = x;
+	}
+	
+	public boolean eliminar(String tit) {
+		if(verificar_disponibilidad_libro_titulo_x(tit)) {
+			
+			for(int i = 0; i < nroLib; i++) {
+				if(LB[i].obt_titulo().equals(tit)) {
+					for(int j = i + 1; j < nroLib; j++) {
+						LB[j - 1] = LB[j];
+						disponibilidad[j - 1] = disponibilidad[j];
+					}
+					nroLib--;
+					
+				}
+			}
+			
+			
+			
+			
+			return true;
+		}
+		
+		return false;
+	}
+
+}
