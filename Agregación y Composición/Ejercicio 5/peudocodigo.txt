@@ -1,0 +1,203 @@
+Class Libro{
+	
+	private String titulo, autor, tipo;
+
+	public
+
+	Libro(){
+		titulo = autor = tipo = "";
+	}
+
+	metodo obt_titulo(){
+		return titulo;
+	}
+
+	Libro(String titulo, String autor, String tipo){
+		this.titulo = titulo;
+		this.autor = autor;
+		this.tipo = tipo;
+	}
+
+	metodo leer(){
+		read(titulo, autor, tipo);
+	}
+
+
+	metodo mostrar(){
+		print(titulo, autor, tipo);
+	}
+}
+
+
+
+Class Libreria{
+	private String encargado;
+	private int nro_libros;
+	private Libro Dim LB[100];
+	private int Dim stock[100];
+
+	public
+
+	Libreria(){
+		encargado = "Alan";
+		nro_libros = 0;
+	}
+
+	Libreria(String encargado){
+		this.encargado = encargado;
+		nro_libros = 0;
+	}
+
+	metodo leer(){
+		read(encargado, nro_libros);
+		
+	}
+
+	metodo mostrar(){
+		print(encargado, nro_libros);
+		for(i = 0 to nro_libros){
+			LB[i].mostrar();
+		}
+		for(i = 0 to nro_libros){
+			print(stock[i]);
+		}
+	}
+
+
+	metodo adicionar(Libro x, int _stock){
+		stock[nro_libros] += _stock;
+		LB[nro_libros++] = x;
+	}
+
+	metodo comprar_libro(String tit_libro, int cantidad){
+		for(i = 0 to nro_libros){
+			if(LB[i].obt_titulo().equals(tit_libro)) then {
+				if(stock[i] >= cantidad) then {
+					stock[i] -= cantidad;
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	metodo libros_bib_lib(Biblioteca B){
+		for(i = 0 to nro_libros){
+			if(B.verificar_disponibilidad_libro_titulo_x(LB[i].obt_titulo())){
+				if(stock[i] > 0){
+					LB[i].mostrar();
+				}
+			}
+		}
+	}
+
+}
+
+
+Class Biblioteca{
+	
+	private String nombre;
+	private int nroLib;
+	private Libro Dim LB[100];
+	private bool Dim disponibilidad[100];
+
+
+	public
+
+	Biblioteca(){
+		nombre = "";
+		nroLib = 0;
+	}
+
+	Biblioteca(String nombre){
+		this.nombre = nombre;
+		nroLib = 0;
+	}
+
+
+	metodo mostrar(){
+		print(nombre,nroLib);
+		for(i = 0 to nroLib){
+			LB[i].mostrar();
+		}
+		for(i = 0 to nroLib){
+			print(disponibilidad[i]);
+		}
+	}
+
+	metodo adicionar(Libro x){
+		disponibilidad[nroLib] = true;
+		LB[nroLib++] = x;
+	}
+
+
+	metodo verificar_disponibilidad_libro_titulo_x(String tit){
+		for(i = 0 to nroLib){
+			if(LB[i].obt_titulo().equals(tit)) then {
+				if(disponibilidad[i] == true){
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+
+
+
+}
+
+
+Main(){
+
+	// a) Crear todas las clases, una librería y una biblioteca.
+
+	Libro l1("Calculo I", "Chungara", "1");
+	Libro l2("Calculo II", "Chungara", "2");
+	Libro l3("Calculo III", "Chungara", "3");
+
+	Libreria lib();
+
+	lib.adicionar(l1, 2);
+	lib.adicionar(l2, 3);
+	lib.adicionar(l3, 5);
+
+	lib.mostrar();
+
+	Biblioteca bib("Carrera de Informática");
+	bib.adicionar(l1);
+	bib.adicionar(l2);
+
+
+	bib.mostrar();
+
+
+	//b) Realizar un método que verifique si el libro con título x está disponible en la biblioteca.
+
+	if (bib.verificar_disponibilidad_libro_titulo_x("Calculo I")) then {
+		print("si esta disponible");
+	}else{
+		print("no esta disponible");
+	}
+
+	// c) Realizar un método que realice la compra de N libros con el título “POO para noobs” en la librería.
+
+	if(lib.comprar_libro("POO para noobs", 10)) then {
+		print("Libros comprados");
+	}else{
+		print("no se puede hacer la compra");
+	}
+
+
+	d) Mostrar los libros que se encuentren tanto en la librería como en la biblioteca.
+
+
+	lib.libros_bib_lib(bib);
+
+}
+
+
+
+
+
