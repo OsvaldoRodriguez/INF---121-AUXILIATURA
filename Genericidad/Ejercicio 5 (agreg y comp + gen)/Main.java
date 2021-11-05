@@ -4,7 +4,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		// a) Crear todas las clases, una librerÌa y una biblioteca.
+		// a) Crear todas las clases, una librer√≠a y una biblioteca.
 		
 		
 		Libro l1 = new Libro("POO para noobs", "Chungara", "1");
@@ -39,7 +39,7 @@ public class Main {
 		
 		
 		
-		//b) Realizar un mÈtodo que verifique si el libro con tÌtulo x est· disponible en la biblioteca.
+		//b) Realizar un m√©todo que verifique si el libro con t√≠tulo x est√° disponible en la biblioteca.
 
 		System.out.println("==========================================");
 		System.out.println("inciso B\n");
@@ -52,7 +52,7 @@ public class Main {
 		
 		
 		
-		// c) Realizar un mÈtodo que realice la compra de N libros con el tÌtulo ìPOO para noobsî en la librerÌa.
+		// c) Realizar un m√©todo que realice la compra de N libros con el t√≠tulo ‚ÄúPOO para noobs‚Äù en la librer√≠a.
 
 		System.out.println("==========================================");
 		System.out.println("inciso C\n");
@@ -72,7 +72,7 @@ public class Main {
 		
 		lib.mostrar();
 		
-//		d) Mostrar los libros que se encuentren tanto en la librerÌa como en la biblioteca.
+//		d) Mostrar los libros que se encuentren tanto en la librer√≠a como en la biblioteca.
 
 		System.out.println("==========================================");
 		System.out.println("inciso D\n");
@@ -85,7 +85,7 @@ public class Main {
 		System.out.println("==========================================");
 		System.out.println("inciso E\n");
 		
-		bib.eliminar("POO para noobs");
+		bib.eliminar("Disponible", "POO para noobs");
 		
 		bib.mostrar();
 		
