@@ -215,7 +215,7 @@ Main(){
 		
 		// e) eliminar el libro con titulo x de la biblioteca
 		
-		bib.eliminar("POO para noobs");
+		bib.eliminar("Disponible", "POO para noobs");
 		bib.mostrar();
 		
 
